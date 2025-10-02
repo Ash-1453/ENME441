@@ -17,7 +17,7 @@ for x in pin:
 	pwm[y].start(0)
 	
 	y+=1
-gpio.add_event_detect(2, gpio.RISING, callback=switch,bouncetime=100)
+GPIO.add_event_detect(2, gpio.RISING, callback=switch,bouncetime=100)
 try:
 	while True:
 		y=0

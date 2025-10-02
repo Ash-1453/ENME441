@@ -22,8 +22,8 @@ try:
 			b[y]=100*(math.sin(2*math.pi*.2*z-((math.pi*y)/11)))^2
 			pwm[y].ChangeDutyCycle(b[y])
 			y+=1
-	except KeyboardInterrupt: # if user hits ctrl-C
-		print('\nExiting')
+except KeyboardInterrupt: # if user hits ctrl-C
+	print('\nExiting')
 for x in pin:	
 	pwm[y].stop()
 GPIO.cleanup()

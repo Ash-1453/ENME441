@@ -28,6 +28,8 @@ try:
 			y+=1
 except KeyboardInterrupt: # if user hits ctrl-C
 	print('\nExiting')
+except Exception as e:
+	print('/ne')
 y=0
 for x in pin:	
 	pwm[y].stop()

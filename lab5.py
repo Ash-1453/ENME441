@@ -7,7 +7,7 @@ pwm=[]
 b=[]
 y=0
 phi=math.pi/11
-GPIO.setup(2,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(17,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 def switch(channel):
 	global phi
 	phi=phi*-1
@@ -18,7 +18,7 @@ for x in pin:
 	pwm[y].start(0)
 	
 	y+=1
-GPIO.add_event_detect(2, GPIO.RISING, callback=switch,bouncetime=100)
+GPIO.add_event_detect(17, GPIO.RISING, callback=switch,bouncetime=100)
 try:
 	while True:
 		y=0

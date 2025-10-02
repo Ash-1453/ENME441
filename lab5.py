@@ -4,7 +4,7 @@ import math
 GPIO.setmode(GPIO.BCM)
 pin=[14,15,18,23,24,25,8,7,12,16]
 pwm=[]
-brightness=[]
+b=[]
 y=0
 phi=math.pi/11
 

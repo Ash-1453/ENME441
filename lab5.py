@@ -20,11 +20,13 @@ try:
 		y=0
 		for x in pin:
 			z=time.time()
-			b.append(100*(math.sin(math.pi*.2*2*z-phi))**2)
-			pwm[y].ChangeDutyCycle(b[y])
+			brightness=(100*(math.sin(math.pi*.2*2*z-phi*y))**2)
+			pwm[y].ChangeDutyCycle(brightness)
 			y+=1
 except KeyboardInterrupt: # if user hits ctrl-C
 	print('\nExiting')
+y=0
 for x in pin:	
 	pwm[y].stop()
+	y+=1
 GPIO.cleanup()

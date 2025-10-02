@@ -23,7 +23,7 @@ try:
 			pwm[y].ChangeDutyCycle(b[y])
 			y+=1
 	except KeyboardInterrupt: # if user hits ctrl-C
-	print('\nExiting')
+		print('\nExiting')
 for x in pin:	
 	pwm[y].stop()
 GPIO.cleanup()

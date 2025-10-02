@@ -8,7 +8,8 @@ b=[]
 y=0
 phi=math.pi/11
 GPIO.setup(2,GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-def switch():
+def switch(channel):
+	global phi
 	phi=phi*-1
 
 for x in pin:

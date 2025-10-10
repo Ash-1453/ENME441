@@ -43,7 +43,7 @@ def fn():
 GPIO.add_event_detect(s2, GPIO.BOTH, callback=fn, bouncetime=100)
 try:
 	while True:
-		if GPIO.input(s1)==True && bug.__active==False:
+		if GPIO.input(s1)==True and bug.__active==False:
 			bug.start()
 		elif GPIO.input(s1)==False:
 			bug.stop()

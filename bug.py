@@ -36,11 +36,12 @@ class Bug:
 		if self.active==False:
 			self.active=True
 			self._thread=threading.Thread(target=self._move,daemon=True)
+			self._thread.start
 
 	def stop(self):
 		self.active=False
 		on=0
-		self.__shifter.shiftbyte(on)
+		self.__shifter.shiftByte(on)
 
 bug=Bug()
 def fn():

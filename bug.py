@@ -47,6 +47,7 @@ bug=Bug()
 def fn():
 	bug.isWrapOn= not bug.isWrapOn
 #GPIO.add_event_detect(s2, GPIO.BOTH, callback=fn, bouncetime=100) since i added another thread this doesedn work so gonna execute it in my main code 
+s2in1=GPIO.input(s2)
 try:
 	while True:
 		if GPIO.input(s1)==True and bug.active==False:
@@ -58,7 +59,7 @@ try:
 			bug.timestep=bug.timestep/3
 		else:
 			bug.timestep=.1
-		s2in1=False
+		
 		s2in2=GPIO.input(s2)
 		if  s2in1!=s2in2:
 			bug.isWrapOn= not bug.isWrapOn

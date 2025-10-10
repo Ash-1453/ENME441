@@ -36,7 +36,7 @@ class Bug:
 		if self.active==False:
 			self.active=True
 			self._thread=threading.Thread(target=self._move,daemon=True)
-			self._thread.start
+			self._thread.start()
 
 	def stop(self):
 		self.active=False

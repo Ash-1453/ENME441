@@ -13,10 +13,10 @@ class Bug:
 		self.x=x
 		self.isWrapOn=isWrapOn
 		self.__shifter=Shifter(23,24,25)
-		self.__active=False
+		self.active=False
 	def start(self):
-		self.__active=True
-		while self.__active:
+		self.active=True
+		while self.active:
 
 			on=1<<self.x
 			self.__shifter.shiftByte(on)
@@ -33,7 +33,7 @@ class Bug:
 					self.x=7
 			time.sleep(self.timestep)
 	def stop(self):
-		self.__active=False
+		self.active=False
 		on=0
 		self.__shifter.shiftbyte(on)
 
@@ -43,7 +43,7 @@ def fn():
 GPIO.add_event_detect(s2, GPIO.BOTH, callback=fn, bouncetime=100)
 try:
 	while True:
-		if GPIO.input(s1)==True and bug.__active==False:
+		if GPIO.input(s1)==True and bug.active==False:
 			bug.start()
 		elif GPIO.input(s1)==False:
 			bug.stop()

@@ -49,7 +49,7 @@ def client_web_page():
     data_dict=parsePostdata(conn.recv(2048))
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-s.bind("",80)
+s.bind(("",80))
 s.listen(3)
 try:
     while True:

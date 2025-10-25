@@ -91,7 +91,7 @@ try:
         else:
             conn.send(b'HTTP/1.1 200 OK\r\n')
             conn.send(b'Content-Type: text/html\r\n')   
-            conn.sendall(webpage())
+            conn.sendall(web_page())
         conn.close()
 except KeyboardInterrupt:
     print("exiting")

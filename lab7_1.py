@@ -13,7 +13,7 @@ for x in led_pin:
     pwm_instance.append(pwm)
     pwm_instance[y].start(0)
     y+=1
-def web_page():
+def web_page(led_brightness):
     html="""
     <html>
     <head>
@@ -25,9 +25,9 @@ def web_page():
             <input type="range" name="brightness" min ="0" max="100"
             value ="50"/><br><br>
             <label>Select LED:</label><br>
-            <input type="radio" name="led" value="0" checked> LED 1({led_brightness[0]}%) <br>
-            <input type="radio" name="led" value="1"> LED 2 ({led_brightness[1]}%)<br>
-            <input type="radio" name="led" value="2"> LED 3 ({led_brightness[2]}%)<br><br>
+            <input type="radio" name="led" value="0" checked> LED 1 (""" +str(led_brightness[0])+ """%) <br>
+            <input type="radio" name="led" value="1"> LED 2 (""" +str(led_brightness[1])+ """%)<br>
+            <input type="radio" name="led" value="2"> LED 3 (""" +str(led_brightness[2])+ """%)<br><br>
             <input type="submit" value="Change Brightness">
         </form>
     </body>

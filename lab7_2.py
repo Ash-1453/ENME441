@@ -14,7 +14,7 @@ for x in led_pin:
     pwm_instance[y].start(0)
     y+=1
 def web_page():
-    html="""
+    html=f"""
         <html>
             <head>
                 <title>LED Brightness Control</title>
@@ -57,7 +57,7 @@ def web_page():
                         oninput="updateLED(2, this.value)">
                 </div>
             </body>
-    </html>"""""
+    </html>"""
     return bytes(html, 'utf-8')
 def parsePOSTdata(data):
     data_dict = {}
@@ -81,16 +81,17 @@ try:
     while True:
         conn, (client_adress,client_port)=s.accept()
         data_dict=parsePOSTdata(conn.recv(2048))
+        conn.send(b'HTTP/1.1 200 OK\r\n')
+        conn.send(b'Content-Type: text/html\r\n')
         if"brightness" in data_dict.keys() and "led" in data_dict.keys():
             pin_led=int(data_dict["led"])
             led_brightness[pin_led]=int(data_dict["brightness"])
             pwm_instance[pin_led].ChangeDutyCycle(led_brightness[pin_led])
         
-            conn.send(b'HTTP/1.1 200 OK\r\n')
-            conn.send(b'Content-Type: text/html\r\n')  
+            
+            conn.sendall(web_page())  
         else:
-            conn.send(b'HTTP/1.1 200 OK\r\n')
-            conn.send(b'Content-Type: text/html\r\n')   
+               
             conn.sendall(web_page())
         conn.close()
 except KeyboardInterrupt:

@@ -65,7 +65,7 @@ try:
         else:
             conn.send(b'HTTP/1.1 200 OK\r\n')
             conn.send(b'Content-Type: text/html\r\n')   
-            conn.sendall(web_page())
+            conn.sendall(web_page(led_brightness))
         conn.close()
 except KeyboardInterrupt:
     print("exiting")

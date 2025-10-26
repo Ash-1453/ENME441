@@ -55,16 +55,17 @@ try:
     while True:
         conn, (client_adress,client_port)=s.accept()
         data_dict=parsePOSTdata(conn.recv(2048))
+        conn.send(b'HTTP/1.1 200 OK\r\n')
+        conn.send(b'Content-Type: text/html\r\n')
+        conn.send(b'Connection: close\r\n\r\n')
         if"brightness" in data_dict.keys() and "led" in data_dict.keys():
             pin_led=int(data_dict["led"])
             led_brightness[pin_led]=int(data_dict["brightness"])
             pwm_instance[pin_led].ChangeDutyCycle(led_brightness[pin_led])
-        
-            conn.send(b'HTTP/1.1 200 OK\r\n')
-            conn.send(b'Content-Type: text/html\r\n')  
+            conn.sendall(web_page(led_brightness))
+              
         else:
-            conn.send(b'HTTP/1.1 200 OK\r\n')
-            conn.send(b'Content-Type: text/html\r\n')   
+             
             conn.sendall(web_page(led_brightness))
         conn.close()
 except KeyboardInterrupt:
